@@ -1,6 +1,45 @@
-// NYAK GAMES - Search & Theme Functionality
+// NYAK GAMES - Search, Theme & Mobile Menu Functionality
 
 document.addEventListener('DOMContentLoaded', function() {
+    // ============================================
+    // MOBILE MENU TOGGLE
+    // ============================================
+    
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    
+    if (mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener('click', function() {
+            // Toggle active class on button and nav
+            mobileMenuBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mobileMenuBtn.contains(e.target) && !navLinks.contains(e.target)) {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+        
+        // Keyboard accessibility
+        mobileMenuBtn.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                mobileMenuBtn.click();
+            }
+        });
+    }
+    
     // ============================================
     // THEME TOGGLE FUNCTIONALITY
     // ============================================
