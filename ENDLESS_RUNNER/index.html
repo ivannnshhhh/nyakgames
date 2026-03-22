@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Neon Runner - Endless Arcade Game</title>
+    <link rel="icon" href="../NYAK_GAMES/images/NYAK GAMES.png" />
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Back to Home Button -->
+    <a href="../index.html" class="back-to-home-btn" title="Back to Home">
+      <span class="btn-icon">⌂</span>
+      <span class="btn-text">Home</span>
+    </a>
+
+    <div class="game-container">
+        <!-- Game Canvas -->
+        <canvas id="gameCanvas"></canvas>
+        
+        <!-- Start Screen -->
+        <div id="startScreen" class="screen">
+            <h1 class="game-title">NEON RUNNER</h1>
+            <p class="subtitle">ENDLESS ARCADE</p>
+            <div class="start-instruction">
+                <span class="pulse">PRESS SPACE TO START</span>
+            </div>
+            <p class="mobile-hint">Tap anywhere on mobile</p>
+        </div>
+        
+        <!-- In-Game UI -->
+        <div id="gameUI" class="screen hidden">
+            <div class="score-container">
+                <div class="score-display">
+                    <span class="score-label">SCORE</span>
+                    <span id="currentScore">0</span>
+                </div>
+                <div class="score-display high-score-display">
+                    <span class="score-label">BEST</span>
+                    <span id="highScoreDisplay">0</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Game Over Screen -->
+        <div id="gameOverScreen" class="screen hidden">
+            <h2 class="game-over-title">GAME OVER</h2>
+            <div class="final-score">
+                <span class="score-label">FINAL SCORE</span>
+                <span id="finalScore">0</span>
+            </div>
+            <div class="high-score">
+                <span class="score-label">HIGH SCORE</span>
+                <span id="highScore">0</span>
+            </div>
+            <button id="playAgainBtn" class="play-again-btn">
+                PLAY AGAIN
+            </button>
+        </div>
+    </div>
+    
+    <!-- Audio Elements -->
+    <audio id="jumpSound" src="data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU"></audio>
+    <audio id="gameOverSound" src="data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU"></audio>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doodle Jump</title>
+    <link rel="icon" href="../NYAK_GAMES/images/NYAK GAMES.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@600;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Back to Home Button -->
+    <a href="../index.html" class="back-to-home-btn" title="Back to Home">
+      <span class="btn-icon">⌂</span>
+      <span class="btn-text">Home</span>
+    </a>
+
+    <div class="game-wrapper">
+      <div class="game-ui">
+        <div class="score-group">
+          <span class="score-label">Score</span>
+          <span id="scoreEl" class="score-value">0</span>
+        </div>
+        <div class="score-group">
+          <span class="high-score-label">Best</span>
+          <span id="highScoreEl" class="high-score-value">0</span>
+        </div>
+      </div>
+      <canvas id="gameCanvas" width="480" height="600"></canvas>
+      <div class="mobile-controls" id="mobileControls">
+        <button type="button" class="ctrl-btn ctrl-left" id="btnLeft" aria-label="Move left">
+          <span>←</span>
+        </button>
+        <button type="button" class="ctrl-btn ctrl-right" id="btnRight" aria-label="Move right">
+          <span>→</span>
+        </button>
+      </div>
+      <div id="startOverlay" class="overlay overlay-start visible">
+        <h1>Doodle Jump</h1>
+        <p>Use <kbd>←</kbd> <kbd>→</kbd> or <kbd>A</kbd> <kbd>D</kbd> to move</p>
+        <p class="mobile-hint">Or tap the arrows below on mobile</p>
+        <p>Land on platforms to jump higher!</p>
+        <button type="button" id="startBtn" class="btn-start">Play</button>
+      </div>
+      <div id="gameOverOverlay" class="overlay overlay-gameover hidden">
+        <h2>Game Over</h2>
+        <div class="stats">
+          <p>Score: <span id="finalScoreEl">0</span></p>
+        </div>
+        <button type="button" id="restartBtn" class="btn-start">Play Again</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYAK GAMES - Play Free Online Games</title>
+    <link rel="icon" type="image/png" href="images/NYAK GAMES.png">
+    <link rel="stylesheet" href="NYAK_GAMES/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header with Logo, Search, and Navigation -->
+    <header class="header">
+        <div class="header-container">
+            <!-- Logo -->
+            <a href="" class="logo">
+                <span class="logo-text">NYAK</span>
+                <span class="logo-games">GAMES</span>
+            </a>
+            
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search games...">
+                <span class="search-icon">🔍</span>
+            </div>
+            
+            <!-- Right Side: Nav + Theme Toggle -->
+            <div class="header-right">
+                <nav class="nav-links">
+                    <a href="#">All Games</a>
+                    <a href="#">Categories</a>
+                    <a href="#">New</a>
+                </nav>
+                
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span class="toggle-track">
+                        <span class="toggle-thumb">
+                            <span class="toggle-icon sun">☀️</span>
+                            <span class="toggle-icon moon">🌙</span>
+                        </span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content - Games Grid -->
+    <main class="main-content">
+        <div class="games-grid" id="gamesGrid">
+            <!-- Game Card 1: Doodle Jump -->
+            <a href="DOODLE_JUMP/index.html" class="game-card" data-game="doodle jump">
+                <div class="card-image">
+                    <img src="NYAK_GAMES/images/DOODLE_JUMP.png" alt="Doodle Jump">
+                </div>
+                <div class="card-title">Doodle Jump</div>
+            </a>
+
+            <!-- Game Card 2: Flappy Bird -->
+            <a href="FLAPPY_BIRD/index.html" class="game-card" data-game="flappy bird">
+                <div class="card-image">
+                    <img src="NYAK_GAMES/images/FLAPPY_BIRD.png" alt="Flappy Bird">
+                </div>
+                <div class="card-title">Flappy Bird</div>
+            </a>
+
+            <!-- Game Card 3: Hangman -->
+            <a href="HANGMAN/index.html" class="game-card" data-game="hangman">
+                <div class="card-image">
+                    <img src="NYAK_GAMES/images/HANGMAN.png" alt="Hangman">
+                </div>
+                <div class="card-title">Hangman</div>
+            </a>
+
+            <!-- Game Card 4: Neon Runner -->
+            <a href="ENDLESS_RUNNER/index.html" class="game-card" data-game="neon runner endless runner">
+                <div class="card-image">
+                    <img src="NYAK_GAMES/images/NEON_RUNNER.png" alt="Neon Runner">
+                </div>
+                <div class="card-title">Neon Runner</div>
+            </a>
+
+            <!-- Game Card 5: Ping Pong -->
+            <a href="PING_PONG_GAME/index.html" class="game-card" data-game="ping pong">
+                <div class="card-image">
+                    <img src="NYAK_GAMES/images/PINGPONG.png" alt="Ping Pong">
+                </div>
+                <div class="card-title">Ping Pong</div>
+            </a>
+
+            <!-- Game Card 6: Snake -->
+            <a href="SNAKE_GAME/index.html" class="game-card" data-game="snake">
+                <div class="card-image">
+                    <img src="NYAK_GAMES/images/SNAKE.png" alt="Snake">
+                </div>
+                <div class="card-title">Snake</div>
+            </a>
+
+            <!-- Game Card 7: Tilting Maze -->
+            <a href="TILTING_MAZE_GAME/index.html" class="game-card" data-game="tilting maze">
+                <div class="card-image">
+                    <img src="NYAK_GAMES/images/TILTING_MAZE.png" alt="Tilting Maze">
+                </div>
+                <div class="card-title">Tilting Maze</div>
+            </a>
+        </div>
+        
+        <div class="no-results" id="noResults">
+            <div class="no-results-icon">🎮</div>
+            <p>No games found</p>
+        </div>
+    </main>
+
+    <script src="NYAK_GAMES/script.js"></script>
+</body>
+</html>

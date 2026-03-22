@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="../NYAK_GAMES/images/NYAK GAMES.png" />
+    <title>Hangman</title>
+  </head>
+  <body>
+    <!-- Back to Home Button -->
+    <a href="../index.html" class="back-to-home-btn" title="Back to Home">
+      <span class="btn-icon">⌂</span>
+      <span class="btn-text">Home</span>
+    </a>
+
+    <h1>Hangman</h1>
+    <p class="game-subtitle">Find the hidden word - Press a letter</p>
+    
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <span class="stat-label">Wrong</span>
+        <span class="stat-value wrong" id="wrong-count">0</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Score</span>
+        <span class="stat-value score" id="score">0</span>
+      </div>
+    </div>
+
+    <!-- Clue Card -->
+    <div class="clue-card">
+      <span class="clue-label">CLUE:</span>
+      <span class="clue-text" id="clue-text">Loading...</span>
+    </div>
+
+    <div class="game-container">
+      <!-- Hangman Figure -->
+      <svg height="250" width="200" class="figure-container">
+        <!-- Base rod (always visible) -->
+        <line x1="60" y1="20" x2="140" y2="20" class="rod" />
+        <line x1="140" y1="20" x2="140" y2="50" class="rod" />
+        <line x1="60" y1="20" x2="60" y2="230" class="rod" />
+        <line x1="20" y1="230" x2="100" y2="230" class="rod" />
+        <!-- head -->
+        <circle cx="140" cy="70" r="20" class="figure-part" />
+        <!-- body -->
+        <line x1="140" y1="90" x2="140" y2="150" class="figure-part" />
+        <!-- arms -->
+        <line x1="140" y1="120" x2="120" y2="100" class="figure-part" />
+        <line x1="140" y1="120" x2="160" y2="100" class="figure-part" />
+        <!-- legs -->
+        <line x1="140" y1="150" x2="120" y2="180" class="figure-part" />
+        <line x1="140" y1="150" x2="160" y2="180" class="figure-part" />
+      </svg>
+      
+      <!-- Wrong Letters -->
+      <div class="wrong-letters-container">
+        <div class="label">Wrong</div>
+        <div class="letters" id="wrong-letters"></div>
+      </div>
+      
+      <!-- Word Display -->
+      <div class="word" id="word"></div>
+      
+      <!-- Virtual Keyboard -->
+      <div class="keyboard" id="keyboard"></div>
+    </div>
+
+    <!-- Popup -->
+    <div class="popup-container" id="popup-container">
+      <div class="popup">
+        <h2 id="final-message"></h2>
+        <h3 id="final-message-reveal-word"></h3>
+        <button id="play-button">Play Again</button>
+      </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification-container" id="notification-container">
+      <p>You have already entered this letter!</p>
+    </div>
+
+    <!-- Hint Button -->
+    <button class="hint-btn" id="hint-btn" title="Use a hint">💡</button>
+
+    <script src="script.js"></script>
+  </body>
+</html>
