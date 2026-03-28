@@ -1,0 +1,845 @@
+/* NYAK GAMES - Light/Dark Theme Support */
+
+/* ============================================
+   CSS VARIABLES - THEMING SYSTEM
+   ============================================ */
+
+/* Light Theme (Default) */
+:root,
+[data-theme="light"] {
+    /* Backgrounds */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f8f8f8;
+    --bg-input: #f5f5f5;
+    --bg-header: #ffffff;
+    
+    /* Text */
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-muted: #888888;
+    
+    /* Borders & Shadows */
+    --border-color: #e0e0e0;
+    --border-hover: #cccccc;
+    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-card-hover: 0 4px 20px rgba(0, 0, 0, 0.12);
+    --shadow-header: 0 2px 10px rgba(0, 0, 0, 0.05);
+    
+    /* Accent Colors (Logo Colors) */
+    --color-red: #e53935;
+    --color-yellow: #f9a825;
+    --color-green: #43a047;
+    --color-blue: #1e88e5;
+    
+    /* Glow Effects (subtle for light) */
+    --glow-red: rgba(229, 57, 53, 0.15);
+    --glow-yellow: rgba(249, 168, 37, 0.15);
+    --glow-green: rgba(67, 160, 71, 0.15);
+    --glow-blue: rgba(30, 136, 229, 0.15);
+    
+    /* Grid Background */
+    --grid-color: rgba(0, 0, 0, 0.03);
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+    /* Backgrounds */
+    --bg-primary: #0b0b0b;
+    --bg-secondary: #141414;
+    --bg-card: #1a1a1a;
+    --bg-card-hover: #242424;
+    --bg-input: #1a1a1a;
+    --bg-header: #0f0f0f;
+    
+    /* Text */
+    --text-primary: #ffffff;
+    --text-secondary: #bbbbbb;
+    --text-muted: #888888;
+    
+    /* Borders & Shadows */
+    --border-color: #333333;
+    --border-hover: #444444;
+    --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.4);
+    --shadow-card-hover: 0 8px 40px rgba(0, 0, 0, 0.5);
+    --shadow-header: 0 4px 20px rgba(0, 0, 0, 0.3);
+    
+    /* Accent Colors (Logo Colors - brighter) */
+    --color-red: #e53935;
+    --color-yellow: #fbc02d;
+    --color-green: #43a047;
+    --color-blue: #1e88e5;
+    
+    /* Glow Effects (stronger for dark) */
+    --glow-red: rgba(229, 57, 53, 0.5);
+    --glow-yellow: rgba(251, 192, 45, 0.5);
+    --glow-green: rgba(67, 160, 71, 0.5);
+    --glow-blue: rgba(30, 136, 229, 0.5);
+    
+    /* Grid Background */
+    --grid-color: rgba(255, 255, 255, 0.02);
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Grid Background Pattern */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px),
+        linear-gradient(var(--grid-color) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: -1;
+    transition: background 0.3s ease;
+}
+
+/* ============================================
+   HEADER STYLES
+   ============================================ */
+
+.header {
+    background: var(--bg-header);
+    border-bottom: 2px solid var(--color-red);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-header);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+[data-theme="dark"] .header {
+    box-shadow: 0 4px 20px rgba(229, 57, 53, 0.2);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: baseline;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.logo-text {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--color-red);
+    letter-spacing: -1px;
+    transition: text-shadow 0.3s ease;
+}
+
+[data-theme="dark"] .logo-text {
+    text-shadow: 0 0 10px var(--glow-red), 0 0 20px var(--glow-red);
+}
+
+.logo-games {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-left: 2px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+[data-theme="dark"] .logo-games {
+    color: var(--color-yellow);
+    text-shadow: 0 0 8px var(--glow-yellow);
+}
+
+/* Search Bar */
+.search-container {
+    flex: 1;
+    max-width: 500px;
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 44px 12px 16px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    background: var(--bg-input);
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    border-color: var(--color-blue);
+    box-shadow: 0 0 15px var(--glow-blue);
+}
+
+.search-input::placeholder {
+    color: var(--text-muted);
+}
+
+.search-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Header Right Side */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Navigation */
+.nav-links {
+    display: flex;
+    gap: 24px;
+}
+
+.nav-links a {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 8px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-red);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--text-primary);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ============================================
+   THEME TOGGLE STYLES
+   ============================================ */
+
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    outline: none;
+    display: flex;
+    align-items: center;
+}
+
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 2px;
+    border-radius: 20px;
+}
+
+.toggle-track {
+    width: 56px;
+    height: 28px;
+    background: var(--bg-input);
+    border: 2px solid var(--border-color);
+    border-radius: 14px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover .toggle-track {
+    border-color: var(--border-hover);
+}
+
+.toggle-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background: var(--bg-card);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark theme - slide to right */
+[data-theme="dark"] .toggle-thumb {
+    left: calc(100% - 22px);
+}
+
+.toggle-icon {
+    position: absolute;
+    font-size: 12px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.toggle-icon.sun {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.toggle-icon.moon {
+    opacity: 0;
+    transform: scale(0);
+}
+
+/* Dark theme - swap icons */
+[data-theme="dark"] .toggle-icon.sun {
+    opacity: 0;
+    transform: scale(0);
+}
+
+[data-theme="dark"] .toggle-icon.moon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+
+.main-content {
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    width: 100%;
+}
+
+/* Games Grid */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+}
+
+/* Game Card */
+.game-card {
+    display: block;
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Color-coded hover borders */
+.game-card:nth-child(1):hover { border-color: var(--color-red); }
+.game-card:nth-child(2):hover { border-color: var(--color-blue); }
+.game-card:nth-child(3):hover { border-color: var(--color-green); }
+.game-card:nth-child(4):hover { border-color: var(--color-yellow); }
+.game-card:nth-child(5):hover { border-color: var(--color-blue); }
+.game-card:nth-child(6):hover { border-color: var(--color-green); }
+.game-card:nth-child(7):hover { border-color: var(--color-red); }
+
+.game-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-card-hover);
+}
+
+/* Glow effects in dark mode */
+[data-theme="dark"] .game-card:nth-child(1):hover { box-shadow: 0 8px 30px var(--glow-red); }
+[data-theme="dark"] .game-card:nth-child(2):hover { box-shadow: 0 8px 30px var(--glow-blue); }
+[data-theme="dark"] .game-card:nth-child(3):hover { box-shadow: 0 8px 30px var(--glow-green); }
+[data-theme="dark"] .game-card:nth-child(4):hover { box-shadow: 0 8px 30px var(--glow-yellow); }
+[data-theme="dark"] .game-card:nth-child(5):hover { box-shadow: 0 8px 30px var(--glow-blue); }
+[data-theme="dark"] .game-card:nth-child(6):hover { box-shadow: 0 8px 30px var(--glow-green); }
+[data-theme="dark"] .game-card:nth-child(7):hover { box-shadow: 0 8px 30px var(--glow-red); }
+
+/* Card Image */
+.card-image {
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+/* Play button overlay */
+.card-image::after {
+    content: '▶';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: var(--color-red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: white;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.3s ease;
+}
+
+.game-card:hover .card-image::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.game-card:hover .card-image img {
+    transform: scale(1.1);
+}
+
+/* Card Title */
+.card-title {
+    padding: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: left;
+    background: var(--bg-card);
+    border-top: 1px solid var(--border-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Hidden state */
+.game-card.hidden {
+    display: none;
+}
+
+/* ============================================
+   NO RESULTS
+   ============================================ */
+
+.no-results {
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+}
+
+.no-results.visible {
+    display: block;
+}
+
+.no-results-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.no-results p {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* ============================================
+   MOBILE MENU BUTTON
+   ============================================ */
+
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: var(--bg-input);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 8px;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-btn:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-card-hover);
+}
+
+.mobile-menu-btn:focus-visible {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 2px;
+}
+
+.hamburger-line {
+    width: 20px;
+    height: 2px;
+    background: var(--text-secondary);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Mobile menu open state */
+.mobile-menu-btn.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-btn.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Tablet (landscape tablets, 901px and below) */
+@media (max-width: 900px) {
+    .header-container {
+        gap: 16px;
+        padding: 12px 16px;
+    }
+    
+    .search-container {
+        max-width: none;
+    }
+    
+    .games-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 18px;
+    }
+}
+
+/* Large Mobile / Small Tablet (601px - 900px) */
+@media (max-width: 768px) {
+    .header-container {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    
+    .logo {
+        order: 1;
+    }
+    
+    .header-right {
+        order: 2;
+        gap: 12px;
+    }
+    
+    .search-container {
+        order: 3;
+        flex-basis: 100%;
+        max-width: none;
+    }
+    
+    .main-content {
+        padding: 20px 16px;
+    }
+    
+    .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+    
+    .card-title {
+        font-size: 13px;
+        padding: 12px;
+    }
+    
+    .card-image {
+        aspect-ratio: 1;
+    }
+    
+    .logo-text {
+        font-size: 22px;
+    }
+    
+    .logo-games {
+        font-size: 12px;
+    }
+    
+    /* Smaller toggle on mobile */
+    .toggle-track {
+        width: 48px;
+        height: 24px;
+    }
+    
+    .toggle-thumb {
+        width: 18px;
+        height: 18px;
+    }
+    
+    [data-theme="dark"] .toggle-thumb {
+        left: calc(100% - 20px);
+    }
+    
+    /* Show mobile menu button */
+    .mobile-menu-btn {
+        display: flex;
+    }
+    
+    /* Mobile Navigation - Dropdown style */
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-header);
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        border-bottom: 2px solid var(--color-red);
+        box-shadow: var(--shadow-header);
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        z-index: 99;
+    }
+    
+    .nav-links.active {
+        max-height: 200px;
+        padding: 10px 0;
+    }
+    
+    .nav-links a {
+        padding: 12px 20px;
+        font-size: 15px;
+    }
+    
+    .nav-links a::after {
+        display: none;
+    }
+}
+
+/* Mobile (600px and below) */
+@media (max-width: 600px) {
+    .header-container {
+        padding: 10px 12px;
+    }
+    
+    .logo-text {
+        font-size: 20px;
+    }
+    
+    .logo-games {
+        font-size: 11px;
+    }
+    
+    .search-input {
+        padding: 10px 40px 10px 14px;
+        font-size: 13px;
+    }
+    
+    .main-content {
+        padding: 16px 12px;
+    }
+    
+    .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .card-title {
+        font-size: 12px;
+        padding: 10px;
+    }
+    
+    .card-image::after {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+    
+    /* Theme toggle smaller */
+    .toggle-track {
+        width: 44px;
+        height: 22px;
+    }
+    
+    .toggle-thumb {
+        width: 16px;
+        height: 16px;
+    }
+    
+    [data-theme="dark"] .toggle-thumb {
+        left: calc(100% - 18px);
+    }
+    
+    .toggle-icon {
+        font-size: 10px;
+    }
+    
+    /* Mobile menu button */
+    .mobile-menu-btn {
+        width: 36px;
+        height: 36px;
+        padding: 6px;
+    }
+    
+    .hamburger-line {
+        width: 18px;
+    }
+}
+
+/* Small Mobile (480px and below) */
+@media (max-width: 480px) {
+    .header-container {
+        gap: 10px;
+        padding: 8px 10px;
+    }
+    
+    .logo-text {
+        font-size: 18px;
+    }
+    
+    .logo-games {
+        font-size: 10px;
+    }
+    
+    .main-content {
+        padding: 12px 10px;
+    }
+    
+    .games-grid {
+        gap: 10px;
+    }
+    
+    .card-title {
+        font-size: 11px;
+        padding: 8px;
+    }
+    
+    .card-image {
+        aspect-ratio: 1;
+    }
+}
+
+/* Very Small Mobile (360px and below) */
+@media (max-width: 360px) {
+    .header-container {
+        padding: 8px;
+    }
+    
+    .logo-text {
+        font-size: 16px;
+    }
+    
+    .logo-games {
+        font-size: 9px;
+    }
+    
+    .search-input {
+        font-size: 12px;
+        padding: 8px 36px 8px 12px;
+    }
+    
+    .search-icon {
+        right: 10px;
+        font-size: 12px;
+    }
+    
+    .main-content {
+        padding: 10px 8px;
+    }
+    
+    .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .card-title {
+        font-size: 10px;
+        padding: 6px;
+    }
+    
+    .card-image::after {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+    .header-container {
+        padding: 8px 16px;
+    }
+    
+    .main-content {
+        padding: 12px 16px;
+    }
+    
+    .games-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+}
+
+/* Touch device improvements */
+@media (hover: none) and (pointer: coarse) {
+    .game-card:active {
+        transform: scale(0.98);
+    }
+    
+    .nav-links a {
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .theme-toggle:active .toggle-track {
+        transform: scale(0.95);
+    }
+    
+    .mobile-menu-btn:active {
+        transform: scale(0.95);
+    }
+}

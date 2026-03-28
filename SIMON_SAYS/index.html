@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simon Says Game</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <link rel="icon" href="../NYAK_GAMES/images/NYAK GAMES.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Back to Home Button -->
+    <a href="../index.html" class="back-to-home-btn" title="Back to Home">
+      <span class="btn-icon">⌂</span>
+      <span class="btn-text">Home</span>
+    </a>
+
+    <div class="game-wrapper">
+      <div class="glow-effect"></div>
+      
+      <h1 class="game-title">
+        <span class="title-simon">SIMON</span>
+        <span class="title-says">SAYS</span>
+      </h1>
+
+      <div class="score-display">
+        <div class="score-item">
+          <span class="score-label">Level</span>
+          <span class="score-value" id="level-display">0</span>
+        </div>
+        <div class="score-divider"></div>
+        <div class="score-item">
+          <span class="score-label">Best</span>
+          <span class="score-value" id="best-display">0</span>
+        </div>
+      </div>
+
+      <div id="game-container">
+        <div class="color-btn" id="green" data-color="green">
+          <div class="btn-inner"></div>
+          <div class="btn-glow"></div>
+        </div>
+        <div class="color-btn" id="red" data-color="red">
+          <div class="btn-inner"></div>
+          <div class="btn-glow"></div>
+        </div>
+        <div class="color-btn" id="yellow" data-color="yellow">
+          <div class="btn-inner"></div>
+          <div class="btn-glow"></div>
+        </div>
+        <div class="color-btn" id="blue" data-color="blue">
+          <div class="btn-inner"></div>
+          <div class="btn-glow"></div>
+        </div>
+        <div class="center-circle">
+          <div class="center-inner">GO!</div>
+        </div>
+      </div>
+
+      <div id="game-status">
+        <p class="my-text" id="sequence">
+          Sequence: <span id="sequence-display">-</span>
+        </p>
+        <p class="my-text" id="clicks">
+          Clicks: <span id="click-count">0</span>
+        </p>
+      </div>
+
+      <button id="start-btn">
+        <span class="btn-content">
+          <span class="btn-icon">▶</span>
+          <span class="btn-text">Start Game</span>
+        </span>
+        <span class="btn-glow-effect"></span>
+      </button>
+
+      <p id="level-message"></p>
+
+      <div class="instructions">
+        <p>Watch the pattern, then repeat it!</p>
+        <p class="hint">Click the buttons in the same order</p>
+      </div>
+    </div>
+
+    <div class="particles" id="particles"></div>
+  </body>
+</html>
