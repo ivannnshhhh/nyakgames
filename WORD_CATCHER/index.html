@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Catcher</title>
+    <link rel="icon" type="image/png" href="NYAK_GAMES/images/NYAK GAMES.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Back to Home Button -->
+    <a href="../index.html" class="back-to-home-btn" title="Back to Home">
+        <span class="btn-icon">⌂</span>
+        <span class="btn-text">Home</span>
+    </a>
+
+    <div class="game-wrapper">
+        <div class="game-container">
+            <div class="header">
+                <div class="level-badge">
+                    <span class="level-label">LEVEL</span>
+                    <span id="level-value">1</span>
+                </div>
+                <div class="stats">
+                    <div class="stat-box score-box">
+                        <span class="stat-icon">★</span>
+                        <span id="score-value">0</span>
+                    </div>
+                    <div class="stat-box lives-box">
+                        <span class="stat-icon">♥</span>
+                        <span id="lives-value">3</span>
+                    </div>
+                </div>
+                <button id="pause-btn" class="pause-btn">❚❚</button>
+            </div>
+            <div class="game-area">
+                <div class="game-area-bg"></div>
+            </div>
+            <div class="input-area">
+                <input type="text" id="word-input" placeholder="Type the falling words..." autocomplete="off" autofocus>
+            </div>
+            <div id="game-over" class="overlay hidden">
+                <div class="overlay-content">
+                    <div class="overlay-icon">💀</div>
+                    <h2>Game Over</h2>
+                    <p>Final Score: <span id="final-score">0</span></p>
+                    <button id="restart-btn">Play Again</button>
+                </div>
+            </div>
+            <div id="level-complete" class="overlay hidden">
+                <div class="overlay-content">
+                    <div class="overlay-icon">🎉</div>
+                    <h2>Level Complete!</h2>
+                    <p>Score: <span id="level-score">0</span></p>
+                    <button id="next-level-btn">Next Level</button>
+                </div>
+            </div>
+            <div id="paused" class="overlay hidden">
+                <div class="overlay-content">
+                    <div class="overlay-icon">⏸️</div>
+                    <h2>Paused</h2>
+                    <button id="resume-btn">Resume</button>
+                </div>
+            </div>
+            <div id="start-screen" class="overlay">
+                <div class="overlay-content">
+                    <div class="overlay-icon">🎮</div>
+                    <h2>Word Catcher</h2>
+                    <p>Type the falling words before they reach the bottom!</p>
+                    <button id="start-btn">Start Game</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
