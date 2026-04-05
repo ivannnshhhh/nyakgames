@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Breakout Game</title>
+    <link rel="icon" href="../NYAK_GAMES/images/NYAK GAMES.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Back to Home Button -->
+    <a href="../index.html" class="back-to-home-btn" title="Back to Home">
+      <span class="btn-icon">⌂</span>
+      <span class="btn-text">Home</span>
+    </a>
+
+    <div class="game-container">
+      <div class="title-row">
+        <div class="hud-item">
+          <div class="hud-label">Score</div>
+          <div class="hud-value" id="score-display">0</div>
+        </div>
+        
+        <h1 class="game-title">BREAKOUT</h1>
+        
+        <div class="hud-item">
+          <div class="hud-label">Lives</div>
+          <div class="hud-value" id="lives-display">3</div>
+        </div>
+      </div>
+      
+      <div class="canvas-wrapper">
+        <canvas id="canvas"></canvas>
+      </div>
+      
+      <button id="rules-btn" class="btn rules-btn">
+        <span class="btn-icon">📖</span> How to Play
+      </button>
+      
+      <div id="rules" class="rules-overlay">
+        <div class="rules-content">
+          <h2>How To Play</h2>
+          <div class="rule-item">
+            <span class="rule-icon">⬅️</span>
+            <span>Use <strong>LEFT</strong> arrow key to move paddle left</span>
+          </div>
+          <div class="rule-item">
+            <span class="rule-icon">➡️</span>
+            <span>Use <strong>RIGHT</strong> arrow key to move paddle right</span>
+          </div>
+          <div class="rule-item">
+            <span class="rule-icon">🖱️</span>
+            <span>Use <strong>MOUSE</strong> or <strong>TOUCH & HOLD</strong> to control paddle</span>
+          </div>
+          <div class="rule-item">
+            <span class="rule-icon">💥</span>
+            <span>Bounce the ball to break all the blocks!</span>
+          </div>
+          <div class="rule-item">
+            <span class="rule-icon">❤️</span>
+            <span>You have <strong>3 lives</strong> - don't miss the ball!</span>
+          </div>
+          <button id="close-btn" class="btn close-btn">Got it!</button>
+        </div>
+      </div>
+      
+      <div class="flash-overlay" id="flash-overlay"></div>
+      <button class="replay-btn" id="replay-btn">Play Again ↻</button>
+      
+      <p class="instructions">
+        Use <span>← →</span> keys, <span>MOUSE</span>, or <span>TOUCH & HOLD</span> to control the paddle!
+      </p>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

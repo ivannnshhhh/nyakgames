@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ping Pong Game</title>
+    <!-- Google Fonts for retro arcade look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="icon" href="../NYAK_GAMES/images/NYAK GAMES.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Back to Home Button -->
+    <a href="../index.html" class="back-to-home-btn" title="Back to Home">
+      <span class="btn-icon">⌂</span>
+      <span class="btn-text">Home</span>
+    </a>
+
+    <div class="game-wrapper">
+      <!-- Header / Title -->
+      <header class="game-header">
+        <h1 class="game-title">
+          <span class="title-icon">🏓</span> PING PONG <span class="title-glow">ARCADE</span>
+        </h1>
+      </header>
+
+      <!-- Scoreboard -->
+      <div class="scoreboard">
+        <div class="player-score player-left">
+          <span class="player-label">PLAYER 1</span>
+          <span class="score-value" id="score-left">0</span>
+        </div>
+        <div class="score-divider">
+          <span class="divider-text">VS</span>
+        </div>
+        <div class="player-score player-right">
+          <span class="player-label">PLAYER 2</span>
+          <span class="score-value" id="score-right">0</span>
+        </div>
+      </div>
+
+      <!-- Game Canvas Container -->
+      <div class="canvas-container">
+        <canvas id="canvas" width="700" height="450"></canvas>
+        
+        <!-- Start Screen Overlay -->
+        <div class="overlay" id="start-overlay">
+          <div class="overlay-content">
+            <div class="overlay-icon">🏓</div>
+            <h2 class="overlay-title">READY TO PLAY?</h2>
+            <p class="overlay-subtitle">First to 10 points wins!</p>
+            <button class="btn btn-start" id="start-btn">
+              <i class="btn-icon">▶</i> START GAME
+            </button>
+          </div>
+        </div>
+
+        <!-- Pause Overlay -->
+        <div class="overlay hidden" id="pause-overlay">
+          <div class="overlay-content">
+            <div class="overlay-icon">⏸️</div>
+            <h2 class="overlay-title">PAUSED</h2>
+            <button class="btn btn-resume" id="resume-btn">
+              <i class="btn-icon">▶</i> RESUME
+            </button>
+            <button class="btn btn-restart" id="restart-btn">
+              <i class="btn-icon">🔄</i> RESTART
+            </button>
+          </div>
+        </div>
+
+        <!-- Game Over Overlay -->
+        <div class="overlay hidden" id="gameover-overlay">
+          <div class="overlay-content">
+            <div class="overlay-icon" id="winner-icon">🏆</div>
+            <h2 class="overlay-title" id="winner-text">PLAYER 1 WINS!</h2>
+            <p class="overlay-subtitle" id="final-score">Final Score: 10 - 0</p>
+            <button class="btn btn-restart" id="play-again-btn">
+              <i class="btn-icon">🔄</i> PLAY AGAIN
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Control Instructions -->
+      <div class="controls-panel">
+        <div class="control-group player-left-controls">
+          <span class="control-label">PLAYER 1</span>
+          <div class="control-keys">
+            <span class="key">W</span>
+            <span class="key-separator">/</span>
+            <span class="key">S</span>
+          </div>
+          <span class="control-action">Move Up/Down</span>
+        </div>
+        
+        <div class="game-status" id="game-status">
+          <span class="status-indicator"></span>
+          <span class="status-text">Press START to begin</span>
+        </div>
+        
+        <div class="control-group player-right-controls">
+          <span class="control-label">PLAYER 2</span>
+          <div class="control-keys">
+            <span class="key">↑</span>
+            <span class="key-separator">/</span>
+            <span class="key">↓</span>
+          </div>
+          <span class="control-action">Move Up/Down</span>
+        </div>
+      </div>
+
+      <!-- Mobile Touch Controls -->
+      <div class="mobile-controls">
+        <div class="mobile-player-controls player-1-controls">
+          <button class="mobile-btn mobile-up" id="p1-up-btn" touch-action="none">
+            <i class="fas fa-chevron-up"></i>
+          </button>
+          <button class="mobile-btn mobile-down" id="p1-down-btn" touch-action="none">
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+        <div class="mobile-player-controls player-2-controls">
+          <button class="mobile-btn mobile-up" id="p2-up-btn" touch-action="none">
+            <i class="fas fa-chevron-up"></i>
+          </button>
+          <button class="mobile-btn mobile-down" id="p2-down-btn" touch-action="none">
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button class="btn btn-control" id="pause-btn" disabled>
+          <i class="btn-icon">⏸️</i> Pause
+        </button>
+      </div>
+
+      <!-- Keyboard Hints (shown on hover/focus) -->
+      <div class="keyboard-hints">
+        <span class="hint"><kbd>Space</kbd> Pause</span>
+        <span class="hint"><kbd>Enter</kbd> Start/Resume</span>
+      </div>
+    </div>
+
+    <!-- Win Modal -->
+    <div class="modal-overlay" id="win-modal">
+      <div class="modal-content">
+        <div class="modal-icon">🎉</div>
+        <h2 class="modal-title" id="modal-winner">PLAYER 1 WINS!</h2>
+        <p class="modal-score" id="modal-final-score">10 - 0</p>
+        <button class="btn btn-primary" id="modal-play-again">
+          PLAY AGAIN
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
